@@ -1,0 +1,895 @@
+/* ==========================
+   GLOBAL STYLES
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f8f6f2;
+    color:#1a1a1a;
+    overflow-x:hidden;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+section{
+    width:100%;
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+
+.hero{
+    position:relative;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+}
+
+.hero-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.30);
+    z-index:1;
+}
+
+.brand-name{
+    position:absolute;
+    top:35px;
+    left:40px;
+
+    z-index:5;
+
+    color:white;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    font-weight:500;
+
+    letter-spacing:1px;
+}
+
+.hero-overlay{
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    color:white;
+
+    z-index:3;
+}
+
+.hero-overlay h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:4.5rem;
+
+    font-weight:500;
+
+    margin-bottom:20px;
+
+    max-width:900px;
+}
+
+.hero-overlay p{
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    font-size:.95rem;
+}
+
+.scroll-indicator{
+
+    position:absolute;
+
+    bottom:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    z-index:5;
+
+    letter-spacing:3px;
+
+    font-size:.85rem;
+
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:
+        translateX(-50%)
+        translateY(0);
+    }
+
+    50%{
+        transform:
+        translateX(-50%)
+        translateY(10px);
+    }
+
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+#navbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:28px 70px;
+
+    transition:.4s ease;
+}
+
+#navbar.scrolled{
+
+    background:
+    rgba(248,246,242,.85);
+
+    backdrop-filter:
+    blur(20px);
+}
+
+.logo{
+
+    font-family:
+    'Cormorant Garamond',serif;
+
+    font-size:1.8rem;
+}
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+.nav-links a{
+
+    position:relative;
+
+    opacity:.7;
+
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+
+    opacity:1;
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-6px;
+
+    width:0;
+    height:1px;
+
+    background:#1a1a1a;
+
+    transition:.3s;
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+}
+
+/* ==========================
+   HOME SECTION
+========================== */
+
+.home-section{
+
+    padding:120px 8%;
+}
+
+.home-content{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.home-text h2{
+
+    font-family:
+    'Cormorant Garamond',serif;
+
+    font-size:4rem;
+
+    font-weight:500;
+
+    line-height:1.1;
+
+    margin-bottom:30px;
+}
+
+.home-text p{
+
+    max-width:500px;
+
+    line-height:1.9;
+
+    font-size:1.05rem;
+
+    color:#555;
+}
+
+.home-image{
+
+    overflow:hidden;
+
+    border-radius:12px;
+}
+
+.home-image img{
+
+    height:650px;
+
+    object-fit:cover;
+
+    transition:
+    transform 1s ease;
+}
+
+.home-image:hover img{
+
+    transform:scale(1.05);
+}
+
+/* ==========================
+   CATEGORY SECTIONS
+========================== */
+
+.category-section{
+
+    padding:100px 8%;
+
+    overflow:hidden;
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:50px;
+}
+
+.section-header h2{
+
+    font-family:
+    'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    font-weight:500;
+}
+
+.section-header a{
+
+    font-size:.95rem;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.section-header a:hover{
+
+    opacity:.6;
+}
+
+/* ==========================
+   CAROUSEL
+========================== */
+
+.carousel{
+
+    position:relative;
+
+    width:100%;
+
+    overflow:hidden;
+}
+
+/* FADE EDGES */
+
+.carousel::before,
+.carousel::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    width:150px;
+
+    height:100%;
+
+    z-index:20;
+
+    pointer-events:none;
+}
+
+.carousel::before{
+
+    left:0;
+
+    background:
+    linear-gradient(
+        to right,
+        #f8f6f2,
+        transparent
+    );
+}
+
+.carousel::after{
+
+    right:0;
+
+    background:
+    linear-gradient(
+        to left,
+        #f8f6f2,
+        transparent
+    );
+}
+
+/* ==========================
+   TRACK
+========================== */
+
+.carousel-track{
+
+    display:flex;
+
+    gap:40px;
+
+    width:max-content;
+
+    will-change:transform;
+
+    transform:translate3d(0,0,0);
+
+    animation:
+    luxuryScroll 40s linear infinite;
+}
+
+.carousel:hover .carousel-track{
+
+    animation-play-state:paused;
+}
+
+@keyframes luxuryScroll{
+
+    from{
+        transform:
+        translate3d(0,0,0);
+    }
+
+    to{
+        transform:
+        translate3d(-50%,0,0);
+    }
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.card{
+
+    width:320px;
+
+    flex-shrink:0;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.card img{
+
+    width:100%;
+
+    height:450px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    transition:
+    transform .8s ease;
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+}
+
+/* ==========================
+   CARD TITLE
+========================== */
+
+.card-title{
+
+    margin-top:18px;
+
+    font-size:1rem;
+
+    letter-spacing:1px;
+
+    font-weight:500;
+}
+
+/* ==========================
+   GLASS HOVER CARD
+========================== */
+
+.hover-card{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:80px;
+
+    transform:
+    translateX(-50%)
+    translateY(20px);
+
+    width:85%;
+
+    padding:18px;
+
+    background:
+    rgba(255,255,255,.92);
+
+    backdrop-filter:
+    blur(12px);
+
+    border-radius:12px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.08);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.4s ease;
+
+    z-index:5;
+
+    text-align:center;
+
+    line-height:1.6;
+
+    color:#444;
+}
+
+.card:hover .hover-card{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+/* ==========================
+   CARD ELEVATION
+========================== */
+
+.card{
+
+    transition:
+    transform .4s ease;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-8px);
+}
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+
+.contact-section{
+
+    padding:120px 8%;
+}
+
+.contact-section h2{
+
+    font-family:
+    'Cormorant Garamond',serif;
+
+    font-size:4rem;
+
+    font-weight:500;
+
+    margin-bottom:60px;
+}
+
+.contact-wrapper{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1.5fr;
+
+    gap:60px;
+}
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+}
+
+.contact-info p{
+
+    color:#555;
+}
+
+.map-box iframe{
+
+    width:100%;
+
+    height:500px;
+
+    border:none;
+
+    border-radius:12px;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+
+    padding:80px 8% 50px;
+
+    text-align:center;
+
+    border-top:
+    1px solid rgba(0,0,0,.08);
+}
+
+.footer-brand{
+
+    font-family:
+    'Cormorant Garamond',serif;
+
+    font-size:2.3rem;
+
+    margin-bottom:30px;
+}
+
+.footer-icons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-bottom:35px;
+}
+
+.footer-icons a{
+
+    width:55px;
+    height:55px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.06);
+
+    font-size:1.15rem;
+
+    transition:.4s ease;
+}
+
+.footer-icons a:hover{
+
+    transform:
+    translateY(-6px);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.12);
+}
+
+.copyright{
+
+    color:#888;
+
+    font-size:.9rem;
+
+    letter-spacing:1px;
+}
+
+/* ==========================
+   SCROLL ANIMATION
+========================== */
+
+.fade-in{
+
+    opacity:0;
+
+    transform:
+    translateY(60px);
+
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.fade-in.show{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+/* ==========================
+   MOBILE MENU PREP
+========================== */
+
+.nav-toggle{
+
+    display:none;
+}
+
+/* ==========================
+   TABLET
+========================== */
+
+@media(max-width:992px){
+
+    .hero-overlay h1{
+
+        font-size:3.3rem;
+    }
+
+    .home-content{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .home-image img{
+
+        height:500px;
+    }
+
+    .contact-wrapper{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .contact-section h2{
+
+        font-size:3rem;
+    }
+
+    .carousel::before,
+    .carousel::after{
+
+        width:80px;
+    }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+    #navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:25px;
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:20px;
+    }
+
+    .hero-overlay h1{
+
+        font-size:2.5rem;
+    }
+
+    .home-text h2{
+
+        font-size:2.8rem;
+    }
+
+    .section-header h2{
+
+        font-size:2.4rem;
+    }
+
+    .card{
+
+        width:280px;
+    }
+
+    .card img{
+
+        height:380px;
+    }
+
+    .contact-section h2{
+
+        font-size:2.5rem;
+    }
+
+    .footer-brand{
+
+        font-size:2rem;
+    }
+
+    .footer-icons{
+
+        gap:18px;
+    }
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media(max-width:500px){
+
+    .brand-name{
+
+        left:20px;
+
+        font-size:1.6rem;
+    }
+
+    .hero-overlay h1{
+
+        font-size:2rem;
+    }
+
+    .home-text h2{
+
+        font-size:2.2rem;
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+    }
+
+    .card{
+
+        width:250px;
+    }
+
+    .card img{
+
+        height:340px;
+    }
+
+    .hover-card{
+
+        width:90%;
+    }
+
+    .footer-icons a{
+
+        width:48px;
+        height:48px;
+    }
+}
